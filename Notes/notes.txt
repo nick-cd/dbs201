@@ -1,0 +1,253 @@
+RDBMS stands for Relational Database Management System.
+
+RDBMS is the basis for SQL, and for all modern database systems such as MS SQL
+Server, IBM DB2, Oracle, MySQL, and Microsoft Access.
+
+
+The data in RDBMS is stored in database objects called tables. A table is a
+collection of related data entries and it consists of columns and rows.
+A database can contain one or more table.
+
+Every table is broken up into smaller entities called fields.
+
+A field is a column in a table that is designed to maintain specific
+information about every record in the table.
+
+A record, also called a row, is each individual entry that exists in a table.
+
+A column is a vertical entity in a table that contains all information 
+associated with a specific field in a table.
+
+SELECT - extracts data from a database
+UPDATE - updates data in a database
+DELETE - deletes data from a database
+INSERT INTO - inserts new data into a database
+CREATE DATABASE - creates a new database
+ALTER DATABASE - modifies a database
+CREATE TABLE - creates a new table
+ALTER TABLE - modifies a table
+DROP TABLE - deletes a table
+CREATE INDEX - creates an index (search key)
+DROP INDEX - deletes an index
+
+***Selecting fields from table***
+SELECT column1, column2, ...
+FROM table_name;
+
+or
+
+-selects all fields
+SELECT * FROM table_name;
+
+***Selecting Distinct***
+
+SELECT DISTINCT column1, column2, ...
+FROM table_name;
+
+***Where clause***
+- filters records, extract records that pass a
+condition
+
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+Can use AND, OR, NOT boolean operators
+IS NULL
+IS NOT NULL
+
+Operator	Description
+=	Equal
+<>	Not equal. Note: In some versions of SQL this operator may be written as !=
+>	Greater than
+<	Less than
+>=	Greater than or equal
+<=	Less than or equal
+BETWEEN	Between a certain range
+LIKE	Search for a pattern
+IN	To specify multiple possible values for a column
+
+***ORDER BY***
+
+SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1, column2, ... ASC|DESC;
+
+or
+
+SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1 ASC|DESC, column2 ASC|DESC;
+
+- Sorts by column1, if column1 is the same with another record, then order
+by column2.
+
+
+***INDERT INTO***
+
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+
+or
+
+INSERT INTO table_name
+VALUES (value1, value2, value3, ...);
+
+
+***NULL Value***
+
+A field with a NULL value is a field with no value
+
+Not filling in a optional value in a table's field
+will save it as a NULL value.
+
+***UPDATE***
+
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+- Where determines how many records will be updated
+
+***DELETE***
+
+DELETE FROM table_name WHERE condition;
+
+- Delete all rows in table without deleting the table
+DELETE FROM table_name;
+
+***SELECT TOP***
+
+Not all database systems support the SELECT TOP clause. MySQL supports the LIMIT clause to select a limited number of records, while Oracle uses ROWNUM.
+
+SQL Server / MS Access Syntax:
+
+SELECT TOP number|percent column_name(s)
+FROM table_name
+WHERE condition;
+
+MySQL Syntax:
+
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+LIMIT number;
+
+Oracle Syntax:
+
+SELECT column_name(s)
+FROM table_name
+WHERE ROWNUM <= number;
+
+***Min() and MAX() Functions***
+MIN() Syntax
+SELECT MIN(column_name)
+FROM table_name
+WHERE condition;
+
+MAX() Syntax
+SELECT MAX(column_name)
+FROM table_name
+WHERE condition;
+
+***COUNT()***
+
+SELECT COUNT(column_name)
+FROM table_name
+WHERE condition;
+
+***AVG()***
+
+SELECT AVG(column_name)
+FROM table_name
+WHERE condition;
+
+***SUM()***
+
+SELECT SUM(column_name)
+FROM table_name
+WHERE condition;
+
+*NULL values are ignored
+
+***LIKE Operator***
+
+There are two wildcards used in conjunction with the LIKE operator:
+
+% - The percent sign represents zero, one, or multiple characters
+_ - The underscore represents a single character
+
+LIKE Syntax
+
+SELECT column1, column2, ...
+FROM table_name
+WHERE columnN LIKE pattern;
+
+NOT LIKE 
+
+***Wildcards***
+
+- %
+- _
+- [char class]
+- [^char class] or [!char class]
+
+***IN Operator***
+
+SELECT column_name(s)
+FROM table_name
+WHERE column_name IN (value1, value2, ...); 
+
+IN is shorthand for continusly checking for equality.
+
+NOT IN
+
+***BETWEEN Operator***
+
+SELECT column_name(s)
+FROM table_name
+WHERE column_name BETWEEN value1 AND value2; 
+
+The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates.
+The BETWEEN operator is inclusive: begin and end values are included. 
+
+NOT BETWEEN
+
+***Aliases***
+
+SQL aliases are used to give a table, or a column in a table, a temporary name.
+Aliases are often used to make column names more readable.
+An alias only exists for the duration of the query.
+
+Alias Column Syntax
+
+SELECT column_name AS alias_name
+FROM table_name; 
+
+Alias Table Syntax
+
+SELECT column_name(s)
+FROM table_name AS alias_name; 
+
+
+Aliases can be useful when:
+
+-There are more than one table involved in a query
+-Functions are used in the query
+-Column names are big or not very readable
+-Two or more columns are combined together
+
+***JOIN***
+
+(INNER) JOIN: Returns records that have matching values in both tables
+LEFT (OUTER) JOIN: Return all records from the left table, and the matched records from the right table
+RIGHT (OUTER) JOIN: Return all records from the right table, and the matched records from the left table
+FULL (OUTER) JOIN: Return all records when there is a match in either left or right table
+
+***INNER JOIN***
+
+SELECT column_name(s)
+FROM table1
+INNER JOIN table2 ON table1.column_name = table2.column_name; 
+
+
